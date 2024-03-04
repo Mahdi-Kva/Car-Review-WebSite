@@ -2,16 +2,17 @@
 include 'env.php';
 
 // 1. connect to db
-$dbc = new mysqli($host, $user, $pasw);
+$dbc = new mysqli($host, $user, $pass);
 $dbc -> select_db($db);
 // check connection
 if ($dbc -> connect_error) {
     die("Connection failed: " . $dbc -> connect_error);
 }
-var_dump($_GET['id']);
+$id = $_GET['id'];
+var_dump($id);
 
 // 2. execute query
-$sql = "DELETE FROM table WHERE id = 26";
+$sql = "DELETE FROM user WHERE id = $id";
 $result = $dbc -> query($sql);
 
 if ($result) {
